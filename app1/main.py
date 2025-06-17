@@ -1,12 +1,8 @@
-def get_todos(filepath = 'files/todos.txt'):
-    with open(filepath, 'r') as file:
-        todos = file.readlines()
-    return todos
+import time
 
-def write_todos(todos_arg, filepath = 'files/todos.txt'):
-    with open(filepath, 'w') as file:
-        file.writelines(todos_arg)
+from functions import get_todos, write_todos
 
+print(time.strftime("Date: %b %d, %Y %H:%M:%S"))
 while True:
     user_action = input("Type add, show, edit, complete or exit: ")
     user_action = user_action.strip()
@@ -14,7 +10,7 @@ while True:
     if user_action.startswith('add'):
         todo = user_action[4:] 
 
-        todos =get_todos()
+        todos = get_todos()
 
         todos.append(todo + "\n")
 
@@ -25,7 +21,9 @@ while True:
         todos = get_todos()
 
         for index, item in enumerate(todos):
-            row = f"{index + 1}-{item.strip("\n")}"
+            clean = item.rstrip("\n")
+            row = f"{index + 1}-{clean}"
+
             print(row)
 
     elif user_action.startswith('edit'):
