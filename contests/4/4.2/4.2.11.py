@@ -7,14 +7,21 @@ recipes = {
     "Кон Панна": {"coffee": 1, "cream": 1}
 }
 
+
 def order(*args):
-    for i in args:
-        for key, value in recipes.items():
-            if i in key:
-                print(i)
-                in_stock - value
+    for drink in args:
+        if drink not in recipes:
+            continue
+        recipe = recipes[drink]
+        if all(in_stock.get(k, 0) >= v for k, v in recipe.items()):
+            for k, v in recipe.items():
+                in_stock[k] -= v
+            return drink
+    return "К сожалению, не можем предложить Вам напиток"
+Нач
 
 
-in_stock = {"coffee": 1, "milk": 2, "cream": 3}
-print(order("Эспрессо", "Капучино", "Макиато", "Кофе по-венски", "Латте Макиато", "Кон Панна"))
-print(order("Эспрессо", "Капучино", "Макиато", "Кофе по-венски", "Латте Макиато", "Кон Панна"))
+in_stock = {"coffee": 4, "milk": 4, "cream": 0}
+print(order("Капучино", "Макиато", "Эспрессо"))
+print(order("Капучино", "Макиато", "Эспрессо"))
+print(order("Капучино", "Макиато", "Эспрессо"))
