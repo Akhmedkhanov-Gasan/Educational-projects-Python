@@ -16,8 +16,29 @@ def two_sum(nums, target):
 
 
 def con_dup(nums):
-    if len(nums) == len(set(nums)):
+    return len(nums) == len(set(nums))
+
+
+def valid_anagram(t, s):
+    if len(t) != len(s):
         return False
+
+    dict_let = {}
+
+    for i in t:
+        if i not in dict_let:
+            dict_let[i] = 1
+        else:
+            dict_let[i] += 1
+
+    for i in s:
+        if i not in dict_let:
+            return False
+        dict_let[i] -= 1
+
+        if dict_let[i] < 0:
+            return False
+
     return True
 
-print(con_dup([1,2,3,1]))
+print(valid_anagram('anagram', 'nagaram'))
