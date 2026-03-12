@@ -37,6 +37,7 @@ def max_ones(nums):
     for right in range(len(nums)):
         if nums[right] == 0:
             left = right + 1
+        print(left)
         best = max(best, right - left + 1)
     return best
 
