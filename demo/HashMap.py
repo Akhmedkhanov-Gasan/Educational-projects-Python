@@ -41,4 +41,30 @@ def valid_anagram(t, s):
 
     return True
 
-print(valid_anagram('anagram', 'nagaram'))
+def first_unique_char(s):
+    count = {}
+    for char in s:
+        if char not in count:
+            count[char] = 1
+        else:
+            count[char] += 1
+    for index, char in enumerate(s):
+        if count[char] == 1:
+            return index
+
+    return -1
+
+def maj_elem(nums):
+    m = len(nums)
+    count = {}
+    for char in nums:
+        if char not in count:
+            count[char] = 1
+        else:
+            count[char] += 1
+    for num, freq in count.items():
+        if freq > m/2:
+            return num
+
+    return -1
+
