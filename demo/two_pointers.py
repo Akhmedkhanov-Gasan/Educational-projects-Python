@@ -8,17 +8,6 @@ def move_zeros_my(nums):
             current_dict.append(number)
     return current_dict + nulls
 
-
-def counter():
-    count = 0
-
-    def inner():
-        nonlocal count
-        count += 1
-        return count
-
-    return inner
-
 def is_palindrome(s):
     text = [ch.lower() for ch in s if ch.isalpha()]
     left = 0
@@ -32,5 +21,3 @@ def is_palindrome(s):
 
     return True
 
-
-print(is_palindrome('Race car'))
