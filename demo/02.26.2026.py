@@ -8,16 +8,6 @@ def move_zeros_my(nums):
             current_dict.append(number)
     return current_dict + nulls
 
-def move_zeros(nums):
-    insert_pos = 0
-    for i in nums:
-        if i != 0:
-            nums[insert_pos] = i
-            insert_pos += 1
-
-    for i in range(insert_pos, len(nums)):
-        nums[i] = 0
-    return nums
 
 def counter():
     count = 0

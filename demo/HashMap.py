@@ -68,3 +68,29 @@ def maj_elem(nums):
 
     return -1
 
+def move_zeros(nums):
+    insert_pos = 0
+    for i in nums:
+        if i != 0:
+            nums[insert_pos] = i
+            insert_pos += 1
+
+    for i in range(insert_pos, len(nums)):
+        nums[i] = 0
+    return nums
+
+def two_sum_II(nums, target):
+    left = 0
+    right = len(nums) - 1
+
+    while left < right:
+        current_sum = nums[right] + nums[left]
+
+        if current_sum == target:
+            return [left, right]
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+    return -1
+
