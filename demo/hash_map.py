@@ -41,6 +41,7 @@ def valid_anagram(t, s):
 
     return True
 
+
 def first_unique_char(s):
     count = {}
     for char in s:
@@ -53,6 +54,7 @@ def first_unique_char(s):
             return index
 
     return -1
+
 
 def maj_elem(nums):
     m = len(nums)
@@ -68,6 +70,7 @@ def maj_elem(nums):
 
     return -1
 
+
 def move_zeros(nums):
     insert_pos = 0
     for i in nums:
@@ -78,6 +81,7 @@ def move_zeros(nums):
     for i in range(insert_pos, len(nums)):
         nums[i] = 0
     return nums
+
 
 def two_sum_II(nums, target):
     left = 0
@@ -94,6 +98,7 @@ def two_sum_II(nums, target):
             right -= 1
     return -1
 
+
 def remove_duplicates(nums):
     if not nums:
         return 0
@@ -106,6 +111,7 @@ def remove_duplicates(nums):
             nums[slow] = nums[fast]
 
     return slow + 1
+
 
 def is_anagram(s, t):
     if len(s) != len(t):
@@ -129,6 +135,7 @@ def is_anagram(s, t):
 
     return True
 
+
 def first_non_repeating_word(text):
     words = text.split()
     count = {}
@@ -142,6 +149,7 @@ def first_non_repeating_word(text):
             return i
     return None
 
+
 def has_duplicates(nums):
 
     seen = {}
@@ -151,6 +159,7 @@ def has_duplicates(nums):
         else:
             seen[i] = 1
     return False
+
 
 def group_anagram(words):
     sorted_words = {}
@@ -172,5 +181,3 @@ def create_dict(x):
         elif i.isalpha() and i.lower() not in outer:
             outer[i.lower()] = 1
     return outer
-
-
