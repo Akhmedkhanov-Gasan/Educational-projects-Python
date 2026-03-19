@@ -9,6 +9,7 @@ def longest_unique_substring(s: str):
         best = max(best, right - left + 1)
     return best
 
+
 def min_subarray_len(nums, target):
     left = 0
     current_sum = 0
@@ -22,6 +23,7 @@ def min_subarray_len(nums, target):
             left += 1
 
     return 0 if best == float("inf") else best
+
 
 def sub_with_most(s: str) -> int:
     left = 0
@@ -42,6 +44,7 @@ def sub_with_most(s: str) -> int:
 
     return best
 
+
 def long_sub(s):
     left = 0
     window = set()
@@ -53,7 +56,6 @@ def long_sub(s):
         window.add(right)
         max_len = max(max_len, len(window))
     return max_len
-
 
 
 def long_rep(s, k):
@@ -76,6 +78,7 @@ def long_rep(s, k):
 
         best = max(best, right - left +1)
     return best
+
 
 def max_ones(nums):
     left = 0
@@ -120,5 +123,3 @@ def find_vowel(letters, k):
         if right - left + 1 == k:
             best = max(best, current_best)
     return best
-
-
