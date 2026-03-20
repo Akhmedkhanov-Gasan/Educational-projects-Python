@@ -181,3 +181,9 @@ def create_dict(x):
         elif i.isalpha() and i.lower() not in outer:
             outer[i.lower()] = 1
     return outer
+
+#### --------------------- Repeat --------------------- ####
+
+def contains_duplicate(nums):
+    return len(set(nums)) != len(nums)
+
