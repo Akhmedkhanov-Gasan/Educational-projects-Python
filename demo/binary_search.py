@@ -9,5 +9,6 @@ def binary_search(nums, target):
             left = mid + 1
         else:
             right = mid - 1
-    return - 1
+    return left
 
+print(binary_search([1,3,5,6], 0))

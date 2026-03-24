@@ -123,3 +123,32 @@ def find_vowel(letters, k):
         if right - left + 1 == k:
             best = max(best, current_best)
     return best
+
+
+def longest_unique_substring_via_set(s):
+    left = 0
+    x = set()
+    best = 0
+
+    for right in range(len(s)):
+        while s[right] in x:
+            x.remove(s[left])
+            left += 1
+        x.add(s[right])
+        best = max(best, right - left + 1)
+
+    return best
+
+def fuck_this_shit_again(nums, target):
+    left = 0
+    current_sum = 0
+    best = float('inf')
+
+    for right in range(len(nums)):
+        current_sum += nums[right]
+        if current_sum >= target:
+            best = min(best, right - left + 1)
+            current_sum -= nums[left]
+            left += 1
+
+    return best
