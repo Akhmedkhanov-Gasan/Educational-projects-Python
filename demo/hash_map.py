@@ -187,3 +187,19 @@ def create_dict(x):
 def contains_duplicate(nums):
     return len(set(nums)) != len(nums)
 
+def most_moj_numb(nums):
+    freq = {}
+    most_frequent = 0
+    result = 0
+    for i in range(len(nums)):
+        if nums[i] not in freq:
+            freq[nums[i]] = 1
+        else:
+            freq[nums[i]] += 1
+        if freq[nums[i]] > most_frequent:
+            most_frequent = freq[nums[i]]
+            result = nums[i]
+    return result
+
+
+print(most_moj_numb([1,1,2,2,3]))
