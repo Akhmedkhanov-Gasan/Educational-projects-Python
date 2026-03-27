@@ -202,4 +202,17 @@ def most_moj_numb(nums):
     return result
 
 
-print(most_moj_numb([1,1,2,2,3]))
+def longest_consecutive_sequence(nums):
+    best = 0
+    new_set = set(nums)
+    for i in new_set:
+        if (i - 1) not in new_set:
+            j = i
+            current_best = 0
+            while j in new_set:
+                j += 1
+                current_best += 1
+            best = max(best, current_best)
+    return best
+
+print(longest_consecutive_sequence([100,4,200,1,3,2]))
