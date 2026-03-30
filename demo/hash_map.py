@@ -215,4 +215,3 @@ def longest_consecutive_sequence(nums):
             best = max(best, current_best)
     return best
 
-print(longest_consecutive_sequence([100,4,200,1,3,2]))
