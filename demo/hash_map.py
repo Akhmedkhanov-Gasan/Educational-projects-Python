@@ -215,3 +215,33 @@ def longest_consecutive_sequence(nums):
             best = max(best, current_best)
     return best
 
+
+def merge(nums1, m, nums2, n):
+    last_nums1 = m - 1
+    last_nums2 = n - 1
+    last_for_nums1 = m + n - 1
+
+    while last_nums2 >= 0:
+        if last_nums1 >= 0 and nums1[last_nums1] > nums2[last_nums2]:
+            nums1[last_for_nums1] = nums1[last_nums1]
+            last_nums1 -= 1
+        else:
+            nums1[last_for_nums1] = nums2[last_nums2]
+            last_nums2 -= 1
+
+        last_for_nums1 -= 1
+
+
+def remove_element(nums: list[int], val: int) -> int:
+    current = 0
+    for i in nums:
+        if i != val:
+            nums[current] = i
+            current += 1
+        else:
+            continue
+
+    return current
+
+print(remove_element([3,2,2,3], 3))
+
