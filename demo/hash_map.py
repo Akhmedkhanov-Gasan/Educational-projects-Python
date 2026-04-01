@@ -182,7 +182,6 @@ def create_dict(x):
             outer[i.lower()] = 1
     return outer
 
-#### --------------------- Repeat --------------------- ####
 
 def contains_duplicate(nums):
     return len(set(nums)) != len(nums)
@@ -243,5 +242,15 @@ def remove_element(nums: list[int], val: int) -> int:
 
     return current
 
-print(remove_element([3,2,2,3], 3))
 
+def remove_duplicates(nums: list[int]) -> int:
+    write = 1
+    for read in range(1, len(nums)):
+        if nums[read] != nums[write - 1]:
+            nums[write] = nums[read]
+            write += 1
+        else:
+             continue
+    return write
+
+print(remove_duplicates([0,0,1,1,1,2,2,3,3,4]))
