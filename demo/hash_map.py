@@ -243,7 +243,7 @@ def remove_element(nums: list[int], val: int) -> int:
     return current
 
 
-def remove_duplicates(nums: list[int]) -> int:
+def remove_duplicates_leet(nums: list[int]) -> int:
     write = 1
     for read in range(1, len(nums)):
         if nums[read] != nums[write - 1]:
@@ -253,4 +253,14 @@ def remove_duplicates(nums: list[int]) -> int:
              continue
     return write
 
-print(remove_duplicates([0,0,1,1,1,2,2,3,3,4]))
+
+def remove_duplicates_leet_array(nums: list[int]) -> int:
+    write = 2
+    for read in range(2, len(nums)):
+        if nums[read] != nums[write - 2]:
+            nums[write] = nums[read]
+            write += 1
+        else:
+            continue
+    return write
+
