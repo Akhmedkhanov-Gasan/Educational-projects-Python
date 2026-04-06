@@ -11,4 +11,15 @@ def majority_element(nums: list[int]) -> int:
 
     return current
 
-print(majority_element([0,1,1]))
+
+def max_profit(prices: list[int]) -> int:
+    min_price = float("inf")
+    max_profit = 0
+    for i in prices:
+        current = i - min_price
+        max_profit = max(max_profit, current)
+        if i < min_price:
+            min_price = i
+    return max_profit
+
+print(max_profit([7,1,5,3,6,4]))
