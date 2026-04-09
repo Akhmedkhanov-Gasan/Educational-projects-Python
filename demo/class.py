@@ -9,9 +9,20 @@ class UserManager:
         return self.__str__()
 
     def __eq__(self, other):
+        if isinstance(other, list):
+            return self.users == other
         if not isinstance(other, UserManager):
             return False
         return self.users == other.users
+
+    def __len__(self):
+        return len(self.users)
+
+    def __contains__(self, item):
+        return item in self.users
+
+    def __iter__(self):
+        return iter(self.users)
 
     def add_user(self, name):
         self.users.append(name)
@@ -38,7 +49,3 @@ class UserManager:
 a = UserManager.from_list(["A", "B"])
 b = UserManager.from_list(["A", "B"])
 c = UserManager.from_list(["A"])
-
-print(a == b)
-print(a == c)
-print(a == [])
