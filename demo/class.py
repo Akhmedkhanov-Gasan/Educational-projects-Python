@@ -5,6 +5,14 @@ class UserManager:
     def __str__(self):
         return f'{self.__class__.__name__}(users={self.users})'
 
+    def __repr__(self):
+        return self.__str__()
+
+    def __eq__(self, other):
+        if not isinstance(other, UserManager):
+            return False
+        return self.users == other.users
+
     def add_user(self, name):
         self.users.append(name)
         return self.users
@@ -27,14 +35,10 @@ class UserManager:
         else:
             print(f'There is no such user {name}')
 
+a = UserManager.from_list(["A", "B"])
+b = UserManager.from_list(["A", "B"])
+c = UserManager.from_list(["A"])
 
-a = UserManager()
-b = UserManager()
-a.add_user("Gasan")
-print(a.get_users())
-
-users = ["A", "B", "C"]
-manager = UserManager.from_list(users)
-print(manager.get_users())
-a.remove_user('Fuck')
-print(a)
+print(a == b)
+print(a == c)
+print(a == [])
