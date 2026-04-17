@@ -21,10 +21,19 @@ class Fraction:
     def __str__(self):
         return f"{self._numerator}/{self._denominator}"
 
+    def __repr__(self):
+        return f"Fraction('{self._numerator}/{self._denominator}')"
+
+    def __neg__(self):
+        return Fraction(-self._numerator, self._denominator)
+
     def _reduce(self):
         g = gcd(self._numerator, self._denominator)
         self._numerator //= g
         self._denominator //= g
+        if self._denominator < 0:
+            self._numerator *= -1
+            self._denominator *= -1
 
     def numerator(self, value=None):
         if value is None:
@@ -40,13 +49,3 @@ class Fraction:
             self._denominator = value
             self._reduce()
 
-    def __repr__(self):
-        return f"Fraction({self._numerator}, {self._denominator})"
-
-
-fraction = Fraction(3, 210)
-print(fraction, repr(fraction))
-fraction.numerator(10)
-print(fraction.numerator(), fraction.denominator())
-fraction.denominator(2)
-print(fraction.numerator(), fraction.denominator())
