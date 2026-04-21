@@ -27,6 +27,55 @@ class Fraction:
     def __neg__(self):
         return Fraction(-self._numerator, self._denominator)
 
+    def __add__(self, other):
+        new_num = (self._numerator * other._denominator) + (other._numerator * self._denominator)
+        new_den = self._denominator * other._denominator
+        return Fraction(new_num, new_den)
+
+    def __sub__(self, other):
+        new_num = (self._numerator * other._denominator) - (other._numerator * self._denominator)
+        new_den = self._denominator * other._denominator
+        return Fraction(new_num, new_den)
+
+    def __iadd__(self, other):
+        self._numerator = (self._numerator * other._denominator) + (other._numerator * self._denominator)
+        self._denominator = self._denominator * other._denominator
+        self._reduce()
+        return self
+
+    def __isub__(self, other):
+        self._numerator = (self._numerator * other._denominator) - (other._numerator * self._denominator)
+        self._denominator = self._denominator * other._denominator
+        self._reduce()
+        return self
+
+    def __mul__(self, other):
+        new_num = self._numerator * other._numerator
+        new_den = self._denominator * other._denominator
+        return Fraction(new_num, new_den)
+
+    def __imul__(self, other):
+        self._numerator = self._numerator * other._numerator
+        self._denominator = self._denominator * other._denominator
+        self._reduce()
+        return self
+
+    def __truediv__(self, other):
+        new = self * other.reverse()
+        return new
+
+    def __itruediv__(self, other):
+        new = self * other.reverse()
+        self._numerator = new._numerator
+        self._denominator = new._denominator
+        self._reduce()
+        return self
+
+    def reverse(self):
+        new_num = self._denominator
+        new_den = self._numerator
+        return Fraction(new_num, new_den)
+
     def _reduce(self):
         g = gcd(self._numerator, self._denominator)
         self._numerator //= g
@@ -49,3 +98,8 @@ class Fraction:
             self._denominator = value
             self._reduce()
 
+
+a = Fraction(1, 3)
+c = b = Fraction(2, 1).reverse()
+b /= a
+print(a, b, c, b is c)
