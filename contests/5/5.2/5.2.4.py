@@ -71,6 +71,24 @@ class Fraction:
         self._reduce()
         return self
 
+    def __lt__(self, other):
+        return self._numerator * other._denominator < other._numerator * self._denominator
+
+    def __eq__(self, other):
+        return self._numerator * other._denominator == other._numerator * self._denominator
+
+    def __gt__(self, other):
+        return other < self
+
+    def __le__(self, other):
+        return self < other or self == other
+
+    def __ge__(self, other):
+        return self > other or self == other
+
+    def __ne__(self, other):
+        return not (self == other)
+
     def reverse(self):
         new_num = self._denominator
         new_den = self._numerator
@@ -100,6 +118,5 @@ class Fraction:
 
 
 a = Fraction(1, 3)
-c = b = Fraction(2, 1).reverse()
-b /= a
-print(a, b, c, b is c)
+b = Fraction(1, 2)
+print(a > b, a < b, a >= b, a <= b, a == b, a >= b)
